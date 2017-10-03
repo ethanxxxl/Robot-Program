@@ -11,6 +11,7 @@
  */
 
 #include "main.h"
+#include "grabber.h"
 
 /*
  * Runs the user operator control code. This function will be started in its own task with the
@@ -30,7 +31,13 @@
  * This task should never exit; it should end with some kind of infinite loop, even if empty.
  */
 void operatorControl() {
+	int power = 0;
+	int turn = 0;
 	while (1) {
+		power = joystickGetAnalog(1, 2);
+		turn = joystickGetAnalog(1, 1);
+		motorSet(2, power+turn);
+		motorSet(3, power-turn);
 		delay(20);
 	}
 }

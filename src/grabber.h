@@ -1,16 +1,26 @@
 #ifndef _GRABBER_H_
 #define _GRABBER_H_
 
-void autoOpen(int channel);
-void autoClose(int channel);
+class grabber
+{
+private:
+	bool isOpen;
+	bool isUp;
+	int storage;
+public:
+	int servoValue;
 
-void open(int channel, int value);
-void close(int channel, int value);
+	// Open and Close control
 
-void autoUp(int channel);
-void autoDown(int channel);
+	void toggleOpenClose(int channel);
+	void openClose(int channel, int value);
 
-void up(int channel, int value);
-void down(int channel, int value);
+
+	// Up and Down control
+	
+	void toggleUpDown(int channel);
+	void upDown(int channel, int value);
+
+};
 
 #endif
